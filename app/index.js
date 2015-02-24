@@ -68,7 +68,7 @@ var FrancisExpressionEngineGenerator = yeoman.generators.Base.extend({
 
   public: function() {
     this.mkdir('public');
-    this.copy('database-config.php', 'public/database-config.php');
+    this.copy('config.env.php', 'public/config.env.php');
     this.write('public/.gitkeep', '');
 
     this.copy('htaccess', 'public/.htaccess');

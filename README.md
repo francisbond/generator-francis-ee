@@ -65,29 +65,3 @@ generator-francis-ee
 
 * Rerunning `gulp deploy-init` will fail, since a Dokku remote has already been created. Running `git remote remove dokku` will resolve this.
 * `gulp deploy` will sometimes fail if a newer commit has been deployed but not pushed to the repository. You can override this by running `git push origin dokku --force`.
-
-## Updating legacy ExpressionEngine websites
-
-For database deployment functionality to work, the `database.php` file must be updated as follows:
-
-* Any existing database configuration should be removed
-* `database-config.php` (created by the generator) should be included
-* A `table_prefix` should be set where applicable
-* `/public/system/cms/config/database.php` content should be replaced with the below
-
-For example:
-
-```
-/** Absolute path to the ExpressionEngine directory. */
-if ( !defined('ABSPATH') )
-  define('ABSPATH', dirname(__FILE__) . '/../../../');
-
-/** Sets up ExpressionEngine database settings. */
-require_once(ABSPATH . 'database-config.php');
-
-// Assign the group to be used
-$active_group = 'default';
-$query_builder = TRUE;
-
-/* End of file database.php */
-```
